@@ -1,0 +1,29 @@
+styles.css 
+ body {
+                margin: 0;
+                padding: 0;
+                background-image: url('imagen.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            form {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            fieldset {
+                width: 400px;
+                border: 1px solid #ccc;
+                padding: 20px;
+            }
+
+            img {
+                width: 1000px;
+                height: 1000px;
+                position: fixed;
+                z-index: -1;
+            }
