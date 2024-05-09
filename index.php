@@ -52,8 +52,7 @@
     </nav>
 
     <section id="inicio">
-        <h2>Bienvenido a nuestra Academia de Pintura</h2>
-        <p>Descubre el arte de la pintura con nosotros.</p>
+        <h2>Bienvenido a nuestra Empresa</h2>
         <img src="imagen.jpg" alt="imagen" style="width: 100%; max-width: 600px;">
     </section>
     </section>
