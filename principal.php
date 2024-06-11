@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "C:/Users/Usuario/Desktop/proyecto/bd/base_de_datos.php";
+include_once "C:\Users\Usuario\Desktop\proyecto\bd";
 
 if (!isset($_SESSION["usuario"])) {
     header("Location: iniciar_sesion.php");
@@ -20,7 +20,6 @@ if (isset($_POST['cerrarsesion'])) {
 
 $correoUsuario = $_SESSION['correo'];
 $tipoUsuario = $_SESSION['tipousuario'];
-
 
 ?>
 <!DOCTYPE html>
@@ -107,16 +106,16 @@ $tipoUsuario = $_SESSION['tipousuario'];
             function generarMenu($tipoUsuario, $id) {
                 $menu = '';
                 // Elementos comunes para todos los tipos de usuarios
-                $menu .= '<li><a href="principal.php">Inicio</a></li>';
-                $menu .= '<li><a href="usuarios/perfil.php?id=' . $id . '">Perfil</a></li>';
+                $menu .= '<li><a href="./principal.php">Inicio</a></li>';
+                $menu .= '<li><a href="./usuarios/perfil.php?id=' . $id . '">Perfil</a></li>';
                 
                 // Elementos específicos para cada tipo de usuario
                 if ($tipoUsuario === 'profesor') {
-                    $menu .= '<li><a href="clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
+                    $menu .= '<li><a href="./clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
                 } elseif ($tipoUsuario === 'administrador') {
-                    $menu .= '<li><a href="usuarios/listarusuarios.php">Usuarios</a></li>';
+                    $menu .= '<li><a href="./usuarios/listarusuarios.php">Usuarios</a></li>';
                 } elseif ($tipoUsuario === 'alumno') {
-                    $menu .= '<li><a href="clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
+                    $menu .= '<li><a href="./clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
                 }
             
                 return $menu;

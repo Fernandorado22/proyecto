@@ -64,7 +64,7 @@
     <main>
         <div id="form">
             <h1>Iniciar sesión</h1>
-                <form action="bd/compruebausuario.php" method="POST">
+                <form action="./bd/compruebausuario.php" method="POST">
                 <label for="correo">Correo electrónico:</label>
                 <input type="email" id="correo" name="correo" required>
                 <br /><br />
