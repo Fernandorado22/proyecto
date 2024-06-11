@@ -57,11 +57,6 @@
     </section>
     </section>
 
-    <section id="cursos">
-        <h2>Nuestros Cursos</h2>
-        <p>Explora nuestros cursos de pintura para todos los niveles.</p>
-    </section>
-
     <section id="contacto">
         <h2>Contacto</h2>
         <p>¡Contáctanos para obtener más información!</p>

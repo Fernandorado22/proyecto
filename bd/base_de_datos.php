@@ -1,9 +1,10 @@
 <?php
-$contraseña = "Alisal2023";
-$usuario = "proyecto";
+$contraseña = "";
+$usuario = "";
 $nombre_base_de_datos = "dataphract";
 try{
-    $base_de_datos = new PDO('mysql:host=192.168.19.179;dbname=' . $nombre_base_de_datos, $usuario, $contraseña);
+    print_r("dentro del try");
+    $base_de_datos = new PDO('mysql:host=localhost:33;dbname=' . $nombre_base_de_datos, $usuario, $contraseña);
 }catch(Exception $e){
     echo "Ocurrio algo con la base de datos:" . $e->getMessage();
 }
