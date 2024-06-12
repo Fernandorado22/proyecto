@@ -3,7 +3,9 @@ if(!isset($_GET["id"])) exit();
 $id = $_GET["id"];
 include_once "../bd/base_de_datos.php";
 try {
-    $sentencia = $base_de_datos->prepare("DELETE FROM usuario WHERE id = ?;");
+    $sentencia = $base_de_datos->prepare("DELETE FROM usuario WHERE id_usuario = :id;");
+    $sentencia->bindParam(':id', $id);
+    $sentencia->execute();
     $resultado = $sentencia->execute([$id]);
 }catch(Exception $e){
     echo "Ocurrio un error:" . $e->getMessage();

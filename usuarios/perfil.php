@@ -9,14 +9,15 @@ if (isset($_GET['id'])) {
 
 include "../bd/base_de_datos.php"; 
 try {
-    $consulta = $base_de_datos->prepare("SELECT * FROM usuario WHERE id = ?");
-    $consulta->execute([$id]);
+    $consulta = $base_de_datos->prepare("SELECT * FROM usuario WHERE id_usuario = :id");
+    $consulta->bindParam(':id', $id);
+    $consulta->execute();
     $usuario = $consulta->fetch(PDO::FETCH_ASSOC);
 
-    $nombre = $usuario['nombre'];
+    $nombre = $usuario['nombres'];
     $apellidos = $usuario['apellidos'];
     $correo = $usuario['email'];
-    $tipo = $usuario['tipo'];
+    $tipo = $usuario['tipo_usuario'];
 } catch (PDOException $e) {
     echo "Error al ejecutar la consulta: " . $e->getMessage();
 }

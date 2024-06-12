@@ -3,8 +3,9 @@ if(!isset($_GET["id"])) exit();
 $id = $_GET["id"];
 include_once "../bd/base_de_datos.php";
 try {
-    $sentencia = $base_de_datos->prepare("SELECT * FROM usuario WHERE id = ?;");
-    $sentencia->execute([$id]);
+    $sentencia = $base_de_datos->prepare("SELECT * FROM usuario WHERE id_usuario = :id;");
+    $sentencia->bindParam(':id', $id);
+    $sentencia->execute();
     $proyecto = $sentencia->fetch(PDO::FETCH_OBJ);
 }catch(Exception $e){
     echo "Ocurrio un error:" . $e->getMessage();
@@ -88,9 +89,9 @@ try {
 <body>
     <form method="post" action="actualizar_usuario.php">
         <label for="editar-usuario" >Editar usuario</label>
-        <input type="hidden" name="id" value="<?php echo $proyecto->id; ?>">
+        <input type="hidden" name="id" value="<?php echo $proyecto->id_usuario ?>">
         <label for="nombre">Nombre:</label>
-        <input value="<?php echo $proyecto->nombre ?>" name="nombre" required type="text" id="nombre" placeholder="Escribe tu nombre">
+        <input value="<?php echo $proyecto->nombres ?>" name="nombre" required type="text" id="nombre" placeholder="Escribe tu nombre">
         <label for="apellidos">Apellidos:</label>
         <input value="<?php echo $proyecto->apellidos ?>" name="apellidos" required type="text" id="apellidos" placeholder="Escribe tus apellidos">
         <label for="email">Email:</label>

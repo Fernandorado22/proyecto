@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "C:\Users\Usuario\Desktop\proyecto\bd";
+include_once "/bd";
 
 if (!isset($_SESSION["usuario"])) {
     header("Location: iniciar_sesion.php");
@@ -110,13 +110,11 @@ $tipoUsuario = $_SESSION['tipousuario'];
                 $menu .= '<li><a href="./usuarios/perfil.php?id=' . $id . '">Perfil</a></li>';
                 
                 // Elementos específicos para cada tipo de usuario
-                if ($tipoUsuario === 'profesor') {
+                if ($tipoUsuario === 'alumno') {
                     $menu .= '<li><a href="./clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
                 } elseif ($tipoUsuario === 'administrador') {
                     $menu .= '<li><a href="./usuarios/listarusuarios.php">Usuarios</a></li>';
-                } elseif ($tipoUsuario === 'alumno') {
-                    $menu .= '<li><a href="./clases/listar_clase_id.php?id=' . $id . '">Clases</a></li>';
-                }
+                } 
             
                 return $menu;
             }
@@ -132,10 +130,6 @@ $tipoUsuario = $_SESSION['tipousuario'];
 
     <section id="inicio">
         <h2>Bienvenido a nuestra empresa</h2>
-    </section>
-
-    <section id="clientes">
-        <h2>Nuestros Cursos</h2>
     </section>
 
     <section id="contacto">

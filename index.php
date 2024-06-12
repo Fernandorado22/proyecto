@@ -46,20 +46,24 @@
 
     <nav>
         <a href="#inicio">Inicio</a>
-        <a href="#cursos">Cursos</a>
         <a href="#contacto">Contacto</a>
         <a href="iniciar_sesion.php">Iniciar sesion</a>
     </nav>
 
     <section id="inicio">
         <h2>Bienvenido a nuestra Empresa</h2>
-        <img src="imagen.jpg" alt="imagen" style="width: 100%; max-width: 600px;">
+        <img src="imagen_pagina.jpg" alt="imagen" style="width: 100%; max-width: 600px;">
     </section>
     </section>
 
+    <section id="inicio">
+        <h2>Quienes somos</h2>
+        <p>Dataphract es una empresa de desarrollo de bases de datos y páginas web virtuales a través de AWS</p>
+    </section>
+
     <section id="contacto">
-        <h2>Contacto</h2>
-        <p>¡Contáctanos para obtener más información!</p>
+        <h2>Contacta con nosotros</h2>
+        <p>Para ponerte en contacto con nosotros escribrenos al email dataphract@gmail.com</p>
     </section>
 </body>
 </html>

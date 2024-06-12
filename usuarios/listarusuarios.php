@@ -181,13 +181,13 @@ try {
         <tbody>
             <?php foreach($personas as $proyecto){ ?>
             <tr>
-                <td><?php echo $proyecto->id ?></td>
-                <td><?php echo $proyecto->nombre ?></td>
+                <td><?php echo $proyecto->id_usuario ?></td>
+                <td><?php echo $proyecto->nombres ?></td>
                 <td><?php echo $proyecto->apellidos ?></td>
                 <td><?php echo $proyecto->email ?></td>
-                <td><?php echo $proyecto->tipo ?></td>
-                <td><a href="<?php echo "./editar_usuario.php?id=" . $proyecto->id?>">Editar</a></td>
-                <td><a href="<?php echo "./eliminar_usuario.php?id=" . $proyecto->id?>">Eliminar</a></td>
+                <td><?php echo $proyecto->tipo_usuario ?></td>
+                <td><a href="<?php echo "./editar_usuario.php?id=" . $proyecto->id_usuario?>">Editar</a></td>
+                <td><a href="<?php echo "./eliminar_usuario.php?id=" . $proyecto->id_usuario?>">Eliminar</a></td>
             </tr>
             <?php } ?>
         </tbody>
@@ -214,7 +214,6 @@ try {
             <label for="tipo">Privilegios</label>
             <select name="tipo" required name="tipo" id="tipo">
                 <option value="alumno">Alumno</option>
-                <option value="profesor">Profesor</option>
                 <option value="administracion">Administracion</option>
             </select>
             <br><br><input type="submit" value="Registrar">

@@ -7,7 +7,7 @@ $username = $_POST['correo'];
 $password = $_POST['passw'];
 
 try {
-    $consulta = $base_de_datos->prepare("SELECT * FROM usuario WHERE email = :username AND pass = MD5(:password)");
+    $consulta = $base_de_datos->prepare("SELECT * FROM usuario WHERE email = :username AND pass = :password");
     $consulta->bindParam(':username', $username);
     $consulta->bindParam(':password', $password);
     $consulta->execute();
@@ -15,7 +15,7 @@ try {
     if ($consulta->rowCount() == 1) {
     
         $row = $consulta->fetch(PDO::FETCH_ASSOC);
-        $_SESSION['usuario'] = $row['nombre'];
+        $_SESSION['usuario'] = $row['nombres'];
         $_SESSION['correo'] = $row['email'];
         $_SESSION['tipousuario'] = $row['tipo_usuario'];
         $_SESSION['id'] = $row['id_usuario'];

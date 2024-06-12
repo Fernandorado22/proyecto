@@ -8,7 +8,7 @@ $email = $_POST["email"];
 $pass = $_POST["pass"];
 $tipo = $_POST["tipo"];
 try {
-    $sentencia = $base_de_datos->prepare("INSERT INTO usuario(nombre, apellidos, email, pass, tipo) VALUES (?, ?, ?, MD5(?), ?);");
+    $sentencia = $base_de_datos->prepare("INSERT INTO usuario(nombres, apellidos, email, pass, tipo_usuario) VALUES (?, ?, ?, MD5(?), ?);");
     $resultado = $sentencia->execute([$nombre, $apellidos, $email, $pass, $tipo]);
 }catch(Exception $e){
     echo "Ocurrio un error:" . $e->getMessage();
