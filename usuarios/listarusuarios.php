@@ -1,5 +1,12 @@
 <?php
 include "../bd/base_de_datos.php";
+session_start();
+
+if (!isset($_SESSION["usuario"])) {
+    header("Location: iniciar_sesion.php");
+    exit();
+}
+
 try {
     $sentencia = $base_de_datos->query("SELECT * FROM usuario;");
     $personas = $sentencia->fetchAll(PDO::FETCH_OBJ);

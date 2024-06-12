@@ -1,10 +1,11 @@
 <?php
+session_start();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
+if (!isset($_SESSION["usuario"])) {
+    header("Location: iniciar_sesion.php");
+    exit();
 } else {
-    echo "El ID de usuario no está definido en la sesión.";
+    $id = $_SESSION["id"];
 }
 
 include "../bd/base_de_datos.php"; 

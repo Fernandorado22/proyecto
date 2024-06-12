@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "/bd";
+include_once "./bd/base_de_datos.php";
 
 if (!isset($_SESSION["usuario"])) {
     header("Location: iniciar_sesion.php");
