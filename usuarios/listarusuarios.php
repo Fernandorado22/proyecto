@@ -10,9 +10,14 @@ if (!isset($_SESSION["usuario"])) {
 try {
     $sentencia = $base_de_datos->query("SELECT * FROM usuario;");
     $personas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $consulta = $base_de_datos->query("SELECT id_usuario, nombres, apellidos FROM usuario");
+    $usuarios = $consulta->fetchAll(PDO::FETCH_OBJ);
+    $query = $base_de_datos->query("SELECT u.nombres, u.apellidos, p.nombre, p.precio, p.estado FROM proyecto p INNER JOIN usuario u on u.id_usuario = p.fk_id_cliente");
+    $presupuestos = $query->fetchAll(PDO::FETCH_OBJ);
 }catch(Exception $e){
     echo "Ocurrio un error:" . $e->getMessage();
-}
+} 
+
 ?>
 
 
@@ -199,6 +204,31 @@ try {
             <?php } ?>
         </tbody>
     </table>
+
+    <h1>Tabla presupuesto</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre usuario</th>
+                <th>Apellidos usuario</th>
+                <th>Nombre proyecto</th>
+                <th>Estado</th>
+                <th>Presupuesto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($presupuestos as $presupuesto){ ?>
+            <tr>
+                <td><?php echo $presupuesto->nombres ?></td>
+                <td><?php echo $presupuesto->apellidos ?></td>
+                <td><?php echo $presupuesto->nombre ?></td>
+                <td><?php echo $presupuesto->estado ?></td>
+                <td><?php echo $presupuesto->precio ?></td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
     <h1>Agregar usuario</h1>
     <form method="post" action="aplicar_nuevo_usuario.php">
         <fieldset>
@@ -223,6 +253,39 @@ try {
                 <option value="alumno">Alumno</option>
                 <option value="administracion">Administracion</option>
             </select>
+            <br><br><input type="submit" value="Registrar">
+        </fieldset>
+    </form>
+
+    <h1>Agregar proyecto</h1>
+    <form method="post" action="aplicar_nuevo_proyecto.php">
+        <fieldset>
+            <label for="nombre">Nombre:</label>
+            <br>
+            <input name="nombre" required type="text" id="nombre" placeholder="Escribe tu nombre">
+            <br><br>
+            <label for="precio">Precio:</label>
+            <br>
+            <input name="precio" required type="text" id="precio" placeholder="Escribe el precio">
+            <br><br>
+            <label for="tipo">Estado:</label>
+            <select name="tipo" required id="tipo">
+                <option value="en_proceso">En proceso</option>
+                <option value="finalizado">Finalizado</option>
+            </select>
+            <label for="usuario">Usuario:</label>
+            <select name="usuario" required id="usuario">
+                <?php 
+                if ($usuarios) {
+                    // Salida de datos de cada fila
+                    foreach($usuarios as $row) {
+                        echo "<option value='" . $row->id_usuario . "'>" . $row->nombres . " " . $row->apellidos . "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay datos</option>";
+                }
+                ?>
+                </select>
             <br><br><input type="submit" value="Registrar">
         </fieldset>
     </form>
